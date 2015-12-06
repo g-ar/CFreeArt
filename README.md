@@ -3,7 +3,7 @@ Context Free Art codes
 - Generating art using context free grammar
 
 ## Install and run
-- Install the software in debian based systems:
+- Installing the software in debian based systems:
   `sudo apt-get install contextfree`
 - Generate image:
   `cfdg <input>.cfdg -o <output>.png`
