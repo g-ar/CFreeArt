@@ -1,0 +1,9 @@
+startshape init
+
+rule init {
+     CIRCLE {s 5.05 3.05}
+     CIRCLE {s 5 3 b 1}
+     CIRCLE {s 3}
+     init {s 0.6}
+ }
+     

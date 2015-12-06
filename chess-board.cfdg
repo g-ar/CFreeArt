@@ -1,0 +1,14 @@
+background {b -1}
+startshape init
+
+rule init {
+     4* {x 2 }{
+         4* {y 2 }{
+             SQUARE{}
+             SQUARE{x 1 b 1}
+             SQUARE{y 1 b 1}
+             SQUARE{x 1 y 1}
+         }
+     }
+     
+}

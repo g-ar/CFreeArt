@@ -1,0 +1,9 @@
+background {hue 200 sat 0.5 b 1}
+startshape init
+
+rule init {
+     SQUARE {s 0.5}
+     CIRCLE {s 0.99 b 0.5}
+     init {h 10 sat 0.1 s 0.99}
+}
+     
