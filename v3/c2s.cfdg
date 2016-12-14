@@ -1,0 +1,36 @@
+startshape circ[]
+
+path Circle(number R,number S) {
+      MOVETO(R,0)
+      ARCTO(-R,0,R)
+      ARCTO(+R,0,R)
+      CLOSEPOLY()
+      STROKE(0.03*S)[]
+} // The builtin CIRCLE actually draws a solid disk, so, we use ARCTO to draw circle for our purpose
+
+SH = 1/2
+SHB = 1/2
+OFF = 1/2
+shape big {
+      small []
+      small [x -OFF s SH]
+      small [x OFF s SH]
+      small [y -OFF s SH]
+      small [y OFF s SH]
+      big [x -OFF s SHB]
+      big [x OFF s SHB]
+      big [y -OFF s SHB]
+      big [y OFF s SHB]
+}
+
+shape small {
+      Circle(1, 1)[s 1]
+      Circle(0.5, 1)[x -OFF s SH]
+      Circle(0.5, 1)[x OFF s SH]
+      Circle(0.5, 1)[y -OFF s SH]
+      Circle(0.5, 1)[y OFF s SH]
+}
+
+shape circ {
+      big []
+}
