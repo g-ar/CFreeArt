@@ -7,4 +7,7 @@ Context Free Art codes
   `sudo apt-get install contextfree`
 - Generate image:
   `cfdg <input>.cfdg -o <output>.png`
-- All codes are for version 2.2, since that's the version provided by debian wheezy, and version 3 requires g++ v4.8 to compile. Converting to v3 code is not so difficult.
+- All codes are for version 2.2, which can be compiled with version 3 too. Version 3 codes are placed in v3 directory.
+- To generate image in v3:
+  `cfdg <input>.cfdg > <output>.png`
+  
