@@ -1,0 +1,29 @@
+// Floor tiles illusion
+
+startshape start
+
+aa = 1
+bb = sqrt(3)/2/aa
+
+path rhombus {
+    LINETO(bb,0)
+    LINETO(0,aa/2)
+    LINETO(-bb,0)
+    LINETO(0,-aa/2)
+    LINETO(bb,0)
+}
+
+shape fourRhomb {
+    ys = 3*aa/2
+    rhombus [x bb y 0]
+    rhombus [x 0 y ys]
+    rhombus [x -bb y 0]
+    rhombus [x 0 y -ys]
+}
+
+shape start {
+    fourRhomb [hue 0 sat 0.8 b 1]
+    fourRhomb [hue 120 sat 0.8 b 1 r 120]
+    fourRhomb [hue 240 sat 0.8 b 1 r 240]
+}
+
