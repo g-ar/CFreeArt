@@ -1,0 +1,24 @@
+// Are all circles white?
+startshape start
+CF::Background = [hue 90 sat -0.5 b -0.5]
+n = 8
+xt = (n - 1)/2
+yt = (n - 1)/2
+scale = n+2
+CF::Size = [s scale x -xt y -yt]
+sqd = 0.8                 // square size
+circd = sqrt(2)*(1 - sqd) // circle size
+
+shape start {
+    loop j=n [] {
+        loop i=n [] {
+            ys = j + 0.5
+            xs = i + 0.5
+            SQUARE[b -1 s sqd x i y j]
+            if (i < n-1 && j < n-1) {
+                CIRCLE[z 1 b 1 s circd x xs y ys]
+            }
+        }
+    }
+}
+
