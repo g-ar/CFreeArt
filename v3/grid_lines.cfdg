@@ -1,0 +1,22 @@
+startshape circ
+CF::Background = [hue 90 sat -0.5 b -0.5]
+n = 9
+xs = (n+2)/2
+ys = (n-1)/2
+scalex = n+3.5
+scaley = n+1
+CF::Size = [s scalex scaley x -xs y -ys]
+vc = 0.3, 0.5, 0.3, 0 
+
+shape circ {
+    loop j=n [] {
+        transform [x vc[mod(j,4)]]
+        loop i=(n+2) [] {
+            if (mod(i,2) == 1) {
+                SQUARE[b 1 s 1 0.95 x i y j]
+            } else {
+                SQUARE[b -1 s 1 0.95 x i  y j]
+            }
+        }
+    }
+}
