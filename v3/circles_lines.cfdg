@@ -1,0 +1,36 @@
+// Parallel lines or not ?!
+
+startshape start
+
+path circ(number rad) {
+    MOVETO(rad,0)
+    ARCTO(-rad,0,rad, CF::ArcCW)
+    ARCTO(rad,0,rad, CF::ArcCW)
+    STROKE(0.07)[]
+}
+
+path rect(number n) {
+    MOVETO(n,0)
+    LINETO(0,n)
+    LINETO(-n,0)
+    LINETO(0,-n)
+    LINETO(n,0)
+    STROKE(0.07)[]
+}
+
+shape conc {
+    loop i=6 [] {                                 // 6 concentric circles
+        circ(i+1) [] 
+    }     
+}
+
+shape start {
+    loop i=3 [] {
+        loop j=3 [] {
+            xs = i*12
+            ys = j*12
+            conc [x xs y ys]                     // Draw concentric circles
+            rect(6)[x xs y ys hue 0 sat 1 b 0.5] // Draw red squares
+        }
+    }
+}
