@@ -1,0 +1,32 @@
+// Keep staring!
+startshape start
+
+CF::Background = [hue 90 sat -0.5 b -0.5]
+CF::Size = [s 15]
+
+shape start {
+    loop j=6 [] {
+    rad = 28 + j*14
+    twist = (-1)^j * 12
+        loop i=rad [] {
+            xs = (j + 2)*cos(i*360/rad)
+            ys = (j + 2)*sin(i*360/rad)
+            rota = i*360/rad + twist
+            if (mod(i, 2) == 1) {
+                sq [b 1 x xs y ys r rota]
+            } else {
+                sq [b -1 x xs y ys r rota]
+            }
+        }
+    }
+}
+
+path sq {
+    MOVETO(0, 0)
+    LINETO(0, 0.3)
+    LINETO(0.3, 0.3)
+    LINETO(0.3, 0)
+    LINETO(0, 0)
+    STROKE(0.03)[]
+}
+
