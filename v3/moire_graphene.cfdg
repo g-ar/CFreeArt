@@ -1,0 +1,30 @@
+startshape start
+
+// cfdg moire_graphene.cfdg -s 1080 -a 10x25 -o ta%f.png
+// ffmpeg -r 15 -i ./ta%3d.png -c:v libx264 out.mp4
+
+CF::Time = [time 0 360]
+CF::Background =[b 1]
+CF::Size = [s 90]
+CF::Impure = 1
+
+shape graphene {
+    clone CF::Dihedral, 6 {
+        CIRCLE[x 2.5 s 1]
+    }
+}
+            
+shape moire {
+    loop 8 [x 7.5]
+        loop 14 [y 4.35]
+            graphene[]
+}
+      
+shape start {
+    xs = 26
+    ys = xs
+    moire[x -xs y -ys hue 0 sat 1 b 1 time 0 360]
+    xs = xs*(cos(ftime()) - sin(ftime()))
+    ys = ys*(sin(ftime()) + cos(ftime()))
+    moire[x -xs y -ys r ftime() hue 240 sat 1 b 1 time 0 360 z 1]
+}
