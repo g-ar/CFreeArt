@@ -4,7 +4,7 @@ startshape start
 // ffmpeg -r 25 -i ./ta%3d.png -c:v libx264 out.mp4
 
 CF::Time = [time -2 2]
-CF::Background =[b 1]
+CF::Background = [b 1]
 CF::Size = [s 3]
 
 path circ(number rad) {
