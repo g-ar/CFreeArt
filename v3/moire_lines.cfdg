@@ -1,0 +1,26 @@
+startshape start
+
+// cfdg moire_lines.cfdg -s 1080 -a 15x25 -o ta%f.png
+// ffmpeg -r 25 -i ./ta%3d.png -c:v libx264 out.mp4
+
+CF::Time = [time 0 180]
+CF::Background = [b 1]
+CF::Size = [s 3]
+
+path line {
+    MOVETO(0,0)
+    LINETO(0,2)
+    STROKE(0.01)[]
+}
+     
+shape moire {
+    loop 100 [x 0.02]
+        line[]
+}
+      
+shape start {
+    moire[x -1 y -1 time 0 180]
+    xs = cos(ftime()) - sin(ftime())
+    ys = sin(ftime()) + cos(ftime())
+    moire[x -xs y -ys r ftime() time 0 180]
+}
