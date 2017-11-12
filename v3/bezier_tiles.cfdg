@@ -1,0 +1,23 @@
+startshape init
+// cfdg bezier_tiles.cfdg -s 1920x1080 > out.png
+CF::Background = [b 1]
+l = 30
+CF::Size = [s (1920/1080*l) l]
+CF::Tile = [s 6 skew 15 15 r 15]
+CF::Symmetry = CF::p3m1, 0, 0
+
+path bcurve {
+    MOVETO(0,0)
+    CURVETO(2,0, 1,2)
+    CURVETO(4,0, CF::Continuous)
+    STROKE(0.03)[]
+}
+
+shape draw {
+    bcurve[]
+    draw[s 0.95]
+}
+
+shape init {    
+    draw[]
+}
