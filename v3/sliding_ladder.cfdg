@@ -1,0 +1,25 @@
+startshape start
+
+// Draw an astroid
+// cfdg sliding_ladder.cfdg -s 1080 > sl.png
+
+CF::Background = [b -1]
+CF::Impure = 1
+CF::Size = [s 161]
+
+path line(number l) {
+    loop i=l+1 [] {
+        xs = l - i
+        ys = sqrt(l^2 - xs^2)
+        MOVETO(0,ys)
+        LINETO(xs,0)
+        STROKE(0.1)[]
+    }
+}
+
+shape start {
+    l = 80
+    clone CF::Dihedral, 4 {
+        line(l) [b 1 hue 190 sat 1]
+    }
+}
