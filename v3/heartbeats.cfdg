@@ -1,0 +1,25 @@
+startshape init
+
+CF::Background = [b -1]
+CF::Time = [time 0 3600]
+
+path heart {
+    cpx = -1  // control points
+    cpy = 2.5
+    cpx2 = 1
+    cpy2 = 2
+    MOVETO(0,0)
+    CURVETO(2,0, cpx,cpy, cpx2,cpy2)
+    MOVETO(0,0)
+    CURVETO(2,0, cpx,-cpy, cpx2, -cpy2)
+    STROKE(0.03)[]
+}
+
+shape hearts {
+    heart[hue 0 sat 1 b 0.5 r -90]
+    hearts[s 0.99 b 0.1]
+}
+
+shape init {
+    hearts[s (abs(sin(ftime()))+10) time 0 3600]
+}
