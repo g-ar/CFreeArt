@@ -1,0 +1,27 @@
+startshape init
+
+l = 20
+CF::Background = [b -1]
+CF::Size = [s (1920/1080*l) l]
+CF::Tile = [s 3 2 skew 26.5 0]
+
+path step {
+    MOVETO(0,0)
+    LINETO(1.5,1)
+    LINETO(3,0)
+    LINETO(1.5,-1)
+    LINETO(0,0)
+    FILL[hue 37 sat 0.15 b -0.25]
+    LINETO(0,-1)
+    LINETO(1.5,-2)
+    LINETO(1.5,-1)
+    FILL[hue 27 sat 0.28 b -0.4]
+    LINETO(3,0)
+    LINETO(3,-1)
+    LINETO(1.5,-2)
+    FILL[hue 30 sat 0.3]
+}
+
+shape init {
+    step[b 1]
+}
