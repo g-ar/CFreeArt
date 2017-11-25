@@ -1,0 +1,13 @@
+startshape init
+l = 200
+xs = (192/108*l)
+ys = l
+CF::Size = [x -(xs/2) y -(ys/2) s xs ys]
+
+shape init{
+    loop i=1920 [] {
+        loop j=1080 [] {
+            SQUARE[x i y j b bitand(bitright(i*j^2, 11), 1) hue 0 sat 1]
+        }
+    }
+}
