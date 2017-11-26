@@ -1,0 +1,14 @@
+startshape init
+
+l = 1080
+xs = (192/108*l)
+ys = l
+CF::Size = [x -(xs/2) y -(ys/2) s xs ys]
+
+shape init{
+    loop i=1920 [] {
+        loop j=1080 [] {
+            SQUARE[x i y j b (mod(bitxor(i, j),256)/255) hue 0 sat 0.9]
+        }
+    }
+}
