@@ -1,0 +1,18 @@
+startshape init
+CF::Background = [b -1]
+CF::Size = [s 2]
+
+shape sq {
+    SQUARE[ x -0.5 y 0.5 hue 0 sat 1]
+    SQUARE[ x 0.5 y 0.5 hue 120 sat 1]
+    SQUARE[ x -0.5 y -0.5 hue 240 sat 1]
+    SQUARE[ x 0.5 y -0.5 b 1]
+    sq[s 0.5 x -0.5 y 0.5 a -0.5]
+    sq[s 0.5 x 0.5 y 0.5 a -0.5]
+    sq[s 0.5 x -0.5 y -0.5 a -0.5]
+    sq[s 0.5 x 0.5 y -0.5 a -0.5]
+}
+
+shape init {
+    sq[b 1]
+}
