@@ -1,0 +1,29 @@
+startshape init
+
+CF::Background = [b 1]
+
+ang = 30
+x1 = cos(ang)
+y1 = sin(ang)
+
+path rhombus {
+    MOVETO(0,0)
+    LINETO(-x1,y1)
+    LINETO(0,1)
+    LINETO(x1,y1)
+    LINETO(0,0)
+    FILL[]
+}
+
+shape cube {
+    rhombus[hue 0 sat 1 b 0.8]
+    rhombus[hue 0 sat 1 b 0.5 r 120]
+    rhombus[hue 0 sat 1 b 0.65 r -120]
+}
+
+shape init {
+    loop i=6 [] {
+         cube[x (sqrt(2)*cos(90-60*i)) y (sqrt(2)*sin(90-60*i)) z i s 0.9]
+    }
+    rhombus[x 0 y sqrt(2) hue 0 sat 1 b 0.5 r 120 z 6 s 0.9] // first cube's above the last
+}
