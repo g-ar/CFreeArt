@@ -1,0 +1,12 @@
+startshape init
+
+CF::Background = [b 1]
+frames = 720
+CF::Time = [time 0 frames]
+CF::Size = [s 360 360 x -180]
+
+shape init {
+    loop i=360 [] {
+        CIRCLE[x i y (100*sin(i+ftime())) s 3 time 0 frames]
+    }
+}
