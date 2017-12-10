@@ -1,0 +1,27 @@
+startshape init
+
+// time cfdg -a 720 -o t%f.png -s 1920x1080 cycloid.cfdg 
+// ffmpeg -r 50 -i ./t%3d.png -c:v libx264 out.mp4
+
+CF::Background = [b 0.5]
+frames = 720
+rad = 100
+pi = 3.14159265358979
+CF::Time = [time 0 frames]
+CF::Size = [s (frames*rad*pi/180) 360 x -(frames*rad*pi/180/2) y -rad]
+
+path circ(number R,number S) {
+    MOVETO(R,0)
+    ARCTO(-R,0,R)
+    ARCTO(+R,0,R)
+    LINETO(0,0)
+    STROKE(0.03*S)[]
+}
+
+shape init {
+    ft = ftime()
+    loop i=ft [] {
+        CIRCLE[x (rad*(i*pi/180-sin(i))) y (rad*(1-cos(i))) time 0 frames s 10 r -(i+90) hue 0 sat 1 b 1]
+    }
+    circ(rad, 50)[x (rad*ft*pi/180) y rad time 0 frames r -(ft+90)]
+}
