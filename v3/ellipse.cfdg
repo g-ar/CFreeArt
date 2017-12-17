@@ -1,0 +1,31 @@
+startshape init
+
+// locus of a point where the sum of distances to two fixed points is a constant
+
+CF::Background = [b 1]
+CF::Time = [time 0 360]
+l = 6
+k = 3
+CF::Size = [s ((l+k)*192/108) (l+k) x -((k)/2)]
+
+path line(number x1, number y1) {
+     MOVETO(k,0)
+     LINETO(x1,y1)
+     LINETO(0,0)
+     STROKE(0.03)[]
+}
+
+shape init {
+    tht = ftime()
+    rr = (l^2-k^2)/2/(l-k*cos(tht))
+    rx = (rr*cos(tht))
+    ry = (rr*sin(tht))
+    line(rx,ry)[time 0 360]
+
+    loop th=0,tht,0.5 [] {
+         rr = (l^2-k^2)/2/(l-k*cos(th))
+         rx = (rr*cos(th))
+         ry = (rr*sin(th))         
+         CIRCLE[x rx y ry s 0.05 time 0 360]
+    }
+}
