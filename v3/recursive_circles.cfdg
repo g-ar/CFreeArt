@@ -1,0 +1,32 @@
+startshape init
+
+CF::Background = [b -1]
+CF::MaxShapes = 1000000
+
+rr = 0.5
+CF::Size = [s (5*rr) (5*rr)]
+
+x1 = 0
+y1 = 0
+n = 6
+ang = 360/n
+
+path crcl(number R) {
+    MOVETO(R,0)
+    ARCTO(-R,0,R)
+    ARCTO(R,0,R)
+    STROKE(0.02)[]
+}
+
+shape circ {
+    crcl(1)[]
+    loop th=n [] {
+        x1 = x1 + rr*cos(ang*th)
+        y1 = y1 + rr*sin(ang*th)
+        circ [s 0.5 x x1 y y1]
+    }
+}
+
+shape init {
+    circ [hue 0 sat 0 b 1 hue 220 sat 0.5]
+}
