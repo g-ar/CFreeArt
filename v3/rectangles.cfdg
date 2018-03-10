@@ -1,0 +1,44 @@
+// Just to demonstrate how much simpler it is to use cfdg instead 
+// http://www.kovach.me/posts/2018-03-07-generating-art.html
+
+// Had seen it first on TAOCP Vol. 2, intro to random numbers
+// and used sage before knowing about cfdg to draw similar tiling
+// https://g-ar.github.io/posts/interesting-images-using-recurrencesiterations/
+
+startshape init
+CF::Background = [h 71 sat 0.13 a 0.96 b 0.1]
+
+path rect (number fill) {
+    minr = -0.1                         // deviation from vertex
+    maxr = 0.1
+    stx = rand(minr, maxr)              // start position
+    sty = rand(minr, maxr)
+    alph = rand(-0.5, 1)                // random alpha value
+    MOVETO(stx, sty)
+    LINETO(0+rand(minr, maxr), 1+rand(minr, maxr))
+    LINETO(1+rand(minr, maxr), 1+rand(minr, maxr))
+    LINETO(1+rand(minr, maxr), 0+rand(minr, maxr))
+    LINETO(stx, sty)    
+    STROKE()[a alph]
+    if (fill > 0) {
+        FILL[a alph]
+    }
+}
+
+hh = 0, 0, 120                          // 66% red
+
+shape init {
+    maxx = 37
+    maxy = 37
+    loop i=0,maxx,1.5 [] {
+        loop j=0,maxy,1.5 [] {
+            if (randint(4) < 3) {       // 25% empty 
+               if (randint(100) < 90) { // 90% non-black
+                  rect (randint(2)) [x i y j b 1 hue hh[randint(3)] sat 1]
+               } else {
+                  rect (randint(2)) [x i y j b -1 hue hh[randint(3)] sat 1]
+               }
+            }
+        }
+    }
+}
