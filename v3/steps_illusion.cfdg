@@ -1,0 +1,14 @@
+startshape init
+
+CF::Background = [b 1]
+frames = 720
+CF::Time = [time 0 frames]
+CF::Size = [s 360 360 x -180]
+
+shape init {
+    loop i=360 [] {
+        SQUARE[x (6*i) s 3 100 time 0 frames]
+    }
+    SQUARE[x ftime() y -20 s 4 10 time 0 frames b 1 hue 240 sat 1]
+    SQUARE[x ftime() y 20 s 4 10 time 0 frames b 1 hue 180 sat 1]
+}
